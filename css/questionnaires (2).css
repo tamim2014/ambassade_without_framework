@@ -1,0 +1,12 @@
+	
+	  textarea { margin-top:1px; margin-bottom:1px;  width: 79.7%; border: inset 1px #d1f6e1; background: #F2F2F2; }
+	  div { margin-top:2px;   border: outset   0px black; width: 79.7%;  padding:5px; 
+	        background: #d1f6e1; 
+		  }
+	  
+	  span.bleu { color:blue;}
+	  span.bleu:hover { color: #c116e1;  font-size:20px;}
+	  #bt1,#bt1_,#bt2,#bt2_,#bt3,#bt3_,#bt4,#bt4_,#bt5,#bt5_,#bt6,#bt6_,#bt7,#bt7_,#bt8,#bt1_8,#bt9,#bt1_9,#bt10,#bt10_,#bt11,#bt11_ {display:none;}  
+	  .overflow-visible { white-space: initial;  margin-bottom:0px; padding-bottom:0px; width:79.6%;}
+	
+	

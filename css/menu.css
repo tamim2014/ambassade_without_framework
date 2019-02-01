@@ -1,0 +1,70 @@
+	  /* menu veritical*/
+ul:hover { list-style-type: none; }
+	  
+ul.navigation {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #A4A4A4;
+  color: #fff;
+  width: 200px;
+  font: 1.2em "Trebuchet MS", sans-serif;
+}
+.navigation a, .navigation span {
+  display: block;
+  padding: 4px 10px;
+  color: #00004d;
+  text-decoration: none;
+  background: #D4D7C4; url(menu-item.png) left bottom no-repeat;
+}
+.navigation .toggleSubMenu a, .navigation .toggleSubMenu span {
+  background-image: url(menu-item-deroule.png);
+}
+.navigation .open a, .navigation .open span {
+  background-image: url(menu-item-enroule.png);
+}
+.navigation a:hover, .navigation a:focus, .navigation a:active {
+  text-decoration: underline;
+}
+
+.navigation .subMenu {
+  font-size: .8em;
+  
+  background: #49505a url(subMenu.png) 0 0 repeat-x;
+  font-size: .9em;
+  
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #666;
+}
+.navigation ul.subMenu a {
+  background: none;
+  padding: 3px 20px;
+}
+a:hover { opacity: .7;   }
+
+input#afficher  {display:none;}
+
+@media only screen and (max-width:35em){ 
+#imagemenu { display:block;}
+ul.navigation  { display:block ;  width:100%;  }
+div#f  {  display:block; width: 100%;  }
+div#contenu  {  display:none; width: 95%;  }
+input.txt {display:block; left:5.9%; width:90%;}
+input.add {display:block; left: 80%; }
+input#save_  {margin-left: -10px; }
+scan.label { display: none;}
+
+input#afficher  {display:block; left:35%;}
+
+/*control du questionnaire*/
+#close, #write { display:none; }
+#closeread { display:block;}
+/* $("input.txt").attr('maxlength', '18');  c'est du jQuery.Comment le faire en CSS3? */
+
+
+}
+
+
+
+   

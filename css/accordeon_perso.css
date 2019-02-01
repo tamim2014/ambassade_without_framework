@@ -1,0 +1,55 @@
+﻿ 	
+	    /* on fait un canneva au passage de la souris et on separe les sousmenus par une lignehorizontale.*/
+		/*Mais?!pourquoi ce code ne veut pas s exporter dans accordeon_perso.css?????????????????????! je perd l effet hover si je deplace ce code */
+	    div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island1:hover, 
+		div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island2:hover, 
+		div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island3:hover,  
+		div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island4:hover,  
+		div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island5:hover,  
+		div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island6:hover,  
+		div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island7:hover,  
+		div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island8:hover,  
+		div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island9:hover,  
+		div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island10:hover, 
+		div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island11:hover, 
+		div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island12:hover, 
+		div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island13:hover{
+		    padding-top:1%; padding-bottom:1%; /* les padding horizontale ne peuvent pas être mis ici car ça varie en fonction des nom des préfectures. très fastidieus.chronophage!!!*/
+			background-color: #cdbe7f;  position:relative; left:1px;
+			-webkit-border-radius:2px;
+			-moz-border-radius:2px;
+			-khtml-border-radius:2px;			
+             box-shadow:
+                          0px 2px 2px 0px rgba(0, 0, 0, 0.5) inset,
+                           0px 2px 2px 0px rgba(255, 255, 255, 0.5);
+		} 
+
+
+	    html body div#wrap div#aside ul.navigation li a input#zoom {
+			  background-color: #e5eecc;  
+			  height:30px;
+              margin:auto;			  
+			  box-shadow:
+				  0px 2px 2px 0px rgba(0, 0, 0, 0.5) inset,
+				   0px 2px 2px 0px rgba(255, 255, 255, 0.5);  
+
+		}
+		
+
+		
+		#yivawo{
+				 margin-bottom:4px;   
+				 box-shadow: 1px 1px 0px 0px #cdbe9f; 
+				 width:94%; 
+				 height:100%; 
+				 scrollbar:auto;
+                			 
+				margin:auto;				  
+				box-shadow:
+				  0px 8px 8px 0px rgba(0, 0, 0, 0.5) inset,
+				   0px 8px 8px 0px rgba(255, 255, 255, 0.5); 		 
+	       }
+	
+
+
+	

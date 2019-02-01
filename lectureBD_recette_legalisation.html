@@ -1,0 +1,476 @@
+<?php session_start(); if(!isset($_SESSION["pref"])) $_SESSION["pref"]=""; $s=$_SESSION["pref"]; ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title> Recette légalisation</title> 
+<link rel="stylesheet" href="css/style.css"/>
+<link href="css/accueil.css" rel="stylesheet" title="Style" />
+<link href="css/base4.css" rel="stylesheet" title="Style" />
+
+<!--  menu topnav -->
+<link href="css/topnav.css"     rel="stylesheet" title="Style" />
+<link href="css/topnav_min.css" rel="stylesheet" title="Style" />
+<!--  menu accordeon -->
+	<link href="menu2/css/menu.css" rel="stylesheet" title="StyleM" />
+	<link href="css/accordeon_perso.css" rel="stylesheet" title="accord_personnalise" /><!-- le canvas ne prend pas si j'exporte alors je laisse le code du canva ici -->
+	
+	<!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  -->
+    <script src="js/ajax_googleapis_angular1.6.9.min.js"></script> <!-- AFFICHAGE DE LA SAISIE EN SIMULTANEE -->
+	
+	<script src="menu2/js/jquery.js"> </script> 
+	<script src="menu2/js/menu_accordeon.js"> </script>
+	<script src="menu2/js/menu_ajax.js"> </script>
+	<script src="js/capture_items_legalisation.js"></script><!-- lectureBD et affichage -->
+	 <script src="js/jquery.js"></script>
+	<script src="js/lectureBD.js"></script>
+	<script src="js/ecritureBD.js"></script>
+	<script src="js/base4_menu_accordeon.js"></script>
+	<script src="js/accordeon_perso.js"></script>
+	<script src="js/afficher_la_saisie(recette).js"></script>
+	
+		<script>
+	   // Cette fonction répond au bouton"Zoom" ou au bouton "Affiche plein écran"
+        function popup_lectureBD2()
+        {    
+           //window.open("http://google.fr/", "Autrepage", "toolbar=1, location=1, directories=1, status=1, scrollbars=1, resizable=1, copyhistory=1");
+		     //window.open("afficherdanspop_listeLegalisation.php?pr=+str", 'Popup', 'scrollbars=1, Menubar=1, resizable=1,height=409,width=918 ,  top=258, left=175 '); 
+		     window.open("afficherdanspop_listeLegalisation.php?pr=+str", 'Popup', 'scrollbars=1, Menubar=1 '); 
+			 return false;          
+		}			
+
+		$(document).ready(function(){
+			$(window).load(function(){
+			
+				 $("div#m2018").hide();
+				 
+				 $("#contenu").css('width', '124%');				 
+				 $("img#iconemenu").hide();
+				 $("img#imagemenu").show();
+				 $("#contenu").addClass("extended_width");//toggleClass("larger")
+				 
+				 $("#yivawo").slideDown("normal"); //affiche le contenu
+				 $("ul.navigation").show("slow");// affiche le menu de droite
+				 $(" ul#panel2 ").slideDown("slow");// affiche le sous-menu de passeport
+				 
+				return false; 
+				
+			});
+		});
+		</script>
+		<style>
+			/* on fait un canneva au passage de la souris et on separe les sousmenus par une lignehorizontale.*/
+			/*Mais?!pourquoi ce code ne veut pas s exporter dans accordeon_perso.css?????????????????????! je perd l effet hover si je deplace ce code */
+					div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island1:hover, 
+					div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island2:hover, 
+					div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island3:hover,  
+					div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island4:hover,  
+					div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island5:hover,  
+					div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island6:hover,  
+					div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island7:hover,  
+					div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island8:hover,  
+					div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island9:hover,  
+					div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island10:hover, 
+					div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island11:hover, 
+					div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island12:hover, 
+					div#aside ul.navigation li.toggleSubMenu ul#panel2 li a.island13:hover{
+						padding-top:1%; padding-bottom:1%; /* les padding horizontale ne peuvent pas être mis ici car ça varie en fonction des nom des préfectures. très fastidieus.chronophage!!!*/
+						background-color: #cdbe7f;  
+						position:relative; left:1px;
+						-webkit-border-radius:2px;
+						-moz-border-radius:2px;
+						-khtml-border-radius:2px;			
+						 box-shadow:
+									  0px 2px 2px 0px rgba(0, 0, 0, 0.5) inset,
+									   0px 2px 2px 0px rgba(255, 255, 255, 0.5);
+					}
+			        div#aside ul.navigation li a input#zoom{
+						  background-color: #e5eecc;  
+						  height:30px;
+						  margin:auto;				  
+						  box-shadow:
+							  0px 2px 2px 0px rgba(0, 0, 0, 0.5) inset,
+							   0px 2px 2px 0px rgba(255, 255, 255, 0.5); 
+			       }
+					#yivawo{
+						 margin-bottom:4px;   
+						 box-shadow: 1px 1px 0px 0px #cdbe9f; 
+						 width:94%; 
+						 height:100%; 
+						 scrollbar:auto;
+									 
+						margin:auto;				  
+						box-shadow:
+						  0px 8px 8px 0px rgba(0, 0, 0, 0.5) inset,
+						   0px 8px 8px 0px rgba(255, 255, 255, 0.5); 		 
+				   }			
+		</style>	
+</head>
+
+<body>
+<div id="wrap">
+    <!--  creux du haut -->
+    <div id="header"   >	
+	     <div  class="hollowTop"> 
+		     <input type=image src=img/drapeau.png id="beramu" style="border-radius:0px;" /> 
+			
+		     <h1 class="titre" style="margin-right:19.5%;" >RECETTES ETAT CIVIL: Opération légalisation  </h1>
+		 </div>	   	    
+	</div>
+	<!-- NAVIGATION HORIZONTAL -->
+	<div id="nav" >	
+			<div class="topnav" id="myTopnav">
+
+								  <div class="dropdown" >
+											<button class="dropbtn">2015 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2015</a>
+											  <a href="#">Février-2015</a>
+											  <a href="#">Mars-2015</a>
+											  <a href="#">Avril-2015</a>
+											  <a href="#">Mai-2015</a>
+											  <a href="#">Juin-2015</a>
+											  <a href="#">Juillet-2015</a>
+											  <a href="#">Août-2015</a>
+											  <a href="#">Septembre-2015</a>
+											  <a href="#">Octobre-2015</a>
+											  <a href="#">Novembre-2015</a>
+											  <a href="#">Décembre-2015</a>
+											</div>
+								  </div>
+								  <div class="dropdown">
+											<button class="dropbtn">2016 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2016</a>
+											  <a href="#">Février-2016</a>
+											  <a href="#">Mars-2016</a>
+											  <a href="#">Avril-2016</a>
+											  <a href="#">Mai-2016</a>
+											  <a href="#">Juin-2016</a>
+											  <a href="#">Juillet-2016</a>
+											  <a href="#">Août-2016</a>
+											  <a href="#">Septembre-2016</a>
+											  <a href="#">Octobre-2016</a>
+											  <a href="#">Novembre-2016</a>
+											  <a href="#">Décembre-2016</a>
+											</div>
+								  </div>
+								  <div class="dropdown">
+											<button class="dropbtn">2017 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2017</a>
+											  <a href="#">Février-2017</a>
+											  <a href="#">Mars-2017</a>
+											  <a href="#">Avril-2017</a>
+											  <a href="#">Mai-2017</a>
+											  <a href="#">Juin-2017</a>
+											  <a href="#">Juillet-2017</a>
+											  <a href="#">Août-2017</a>
+											  <a href="#">Septembre-2017</a>
+											  <a href="#">Octobre-2017</a>
+											  <a href="#">Novembre-2017</a>
+											  <a href="#">Décembre-2017</a>
+											</div>
+								  </div>								 									  
+								  <div class="dropdown">
+											<button class="dropbtn">2021 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2021</a>
+											  <a href="#">Février-2021</a>
+											  <a href="#">Mars-2021</a>
+											  <a href="#">Avril-2021</a>
+											  <a href="#">Mai-2021</a>
+											  <a href="#">Juin-2021</a>
+											  <a href="#">Juillet-2022</a>
+											  <a href="#">Août-2022</a>
+											  <a href="#">Septembre-2022</a>
+											  <a href="#">Octobre-2022</a>
+											  <a href="#">Novembre-2022</a>
+											  <a href="#">Décembre-2022</a>
+											</div>
+								  </div>								  
+								  <div class="dropdown">
+											<button class="dropbtn">2023 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2023</a>
+											  <a href="#">Février-2023</a>
+											  <a href="#">Mars-2023</a>
+											  <a href="#">Avril-2023</a>
+											  <a href="#">Mai-2023</a>
+											  <a href="#">Juin-20123</a>
+											  <a href="#">Juillet-2023</a>
+											  <a href="#">Août-2023</a>
+											  <a href="#">Septembre-2023</a>
+											  <a href="#">Octobre-2023</a>
+											  <a href="#">Novembre-2023</a>
+											  <a href="#">Décembre-2023</a>
+											</div>
+								  </div>								  
+								  <div class="dropdown">
+											<button class="dropbtn">2024 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2024</a>
+											  <a href="#">Février-2024</a>
+											  <a href="#">Mars-2024</a>
+											  <a href="#">Avril-2024</a>
+											  <a href="#">Mai-2024</a>
+											  <a href="#">Juin-2024</a>
+											  <a href="#">Juillet-2024</a>
+											  <a href="#">Août-2024</a>
+											  <a href="#">Septembre-2024</a>
+											  <a href="#">Octobre-2024</a>
+											  <a href="#">Novembre-2024</a>
+											  <a href="#">Décembre-2024</a>
+											</div>
+								  </div>
+								  <div class="dropdown">
+											<button class="dropbtn">2025 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2025</a>
+											  <a href="#">Février-2025</a>
+											  <a href="#">Mars-2025</a>
+											  <a href="#">Avril-2025</a>
+											  <a href="#">Mai-2025</a>
+											  <a href="#">Juin-2025</a>
+											  <a href="#">Juillet-2025</a>
+											  <a href="#">Août-2025</a>
+											  <a href="#">Septembre-2025</a>
+											  <a href="#">Octobre-2025</a>
+											  <a href="#">Novembre-2025</a>
+											  <a href="#">Décembre-2025</a>
+											</div>
+								  </div>
+								  <div class="dropdown">
+											<button class="dropbtn">2026 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2026</a>
+											  <a href="#">Février-2026</a>
+											  <a href="#">Mars-2026</a>
+											  <a href="#">Avril-2026</a>
+											  <a href="#">Mai-2026</a>
+											  <a href="#">Juin-2026</a>
+											  <a href="#">Juillet-2026</a>
+											  <a href="#">Août-2026</a>
+											  <a href="#">Septembre-2026</a>
+											  <a href="#">Octobre-2026</a>
+											  <a href="#">Novembre-2026</a>
+											  <a href="#">Décembre-2026</a>
+											</div>
+								  </div>								  
+								  <div class="dropdown">
+											<button class="dropbtn">2027 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2027</a>
+											  <a href="#">Février-2027</a>
+											  <a href="#">Mars-2027</a>
+											  <a href="#">Avril-2027</a>
+											  <a href="#">Mai-2027</a>
+											  <a href="#">Juin-2027</a>
+											  <a href="#">Juillet-2027</a>
+											  <a href="#">Août-2027</a>
+											  <a href="#">Septembre-2027</a>
+											  <a href="#">Octobre-2027</a>
+											  <a href="#">Novembre-2027</a>
+											  <a href="#">Décembre-2027</a>
+											</div>
+								  </div>								  
+								  <div class="dropdown">
+											<button class="dropbtn">2028 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2028</a>
+											  <a href="#">Février-2028</a>
+											  <a href="#">Mars-2028</a>
+											  <a href="#">Avril-2028</a>
+											  <a href="#">Mai-2028</a>
+											  <a href="#">Juin-2028</a>
+											  <a href="#">Juillet-2028</a>
+											  <a href="#">Août-2028</a>
+											  <a href="#">Septembre-2028</a>
+											  <a href="#">Octobre-2028</a>
+											  <a href="#">Novembre-2028</a>
+											  <a href="#">Décembre-2028</a>
+											</div>
+								  </div>								  
+								  <div class="dropdown">
+											<button class="dropbtn">2029 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2029</a>
+											  <a href="#">Février-2029</a>
+											  <a href="#">Mars-2029</a>
+											  <a href="#">Avril-2029</a>
+											  <a href="#">Mai-2029</a>
+											  <a href="#">Juin-2029</a>
+											  <a href="#">Juillet-2029</a>
+											  <a href="#">Août-2029</a>
+											  <a href="#">Septembre-2029</a>
+											  <a href="#">Octobre-2029</a>
+											  <a href="#">Novembre-2029</a>
+											  <a href="#">Décembre-2029</a>
+											</div>
+								  </div>								  								  
+						          <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+			</div>	
+	</div>		
+	<!-- le contenu -->
+	<div id="main">
+	    <!-- FORMULAIRE DE SAISIE -->
+	   <div id="navgauche">
+	        <form action="SERVEUR/ecritureBD_insertionSQL_legalisation.php" method="post" name="form1" >
+	            <div class="section"  >
+			        <br>
+					<input type="date" name="date"  />
+					<input type="text" name="nb_legalisation" placeholder="Nbre Légalisation" class="afficher_pendant_la_saisaie_recette" />
+					<input type="text" name="nb_concordance"  placeholder="Nbre Concordance" class="afficher_pendant_la_saisaie_recette" />
+					
+			
+			    </div>
+			    <div class="section">
+			       <br>
+				   <input type="text" name="nb_coutume" placeholder="Nbre Coutume" class="afficher_pendant_la_saisaie_recette" >
+				   <input type="text" name="nb_celibat" placeholder="Nbre Celibat" class="afficher_pendant_la_saisaie_recette" >
+				   <input type="text" name="nb_sc" placeholder="Nbre SC" class="afficher_pendant_la_saisaie_recette" >
+			    </div>
+				<div class="section">
+                   <br>
+                   <input type="text" name="nb_depot" placeholder="Nbre Dépôt & Ren" class="afficher_pendant_la_saisaie_recette">
+				   <input type="text" name="nb_pp" placeholder="PP" class="afficher_pendant_la_saisaie_recette" >
+				   <input type="text" name="nb_lp" placeholder="LP" class="afficher_pendant_la_saisaie_recette" >                   									   
+			    </div>
+			    <div class="section">
+                    <br>				
+				    <label for="batani1" style="margin-left:30px; margin-top:14px;  float:left; " >Année</label><input type="checkbox" name="batani1"  style="float:left; margin-top:-14px;" checked>
+                    <select title="annee" name="annee" onChange="changement(this)"  style="max-width:60px; margin-top:-18px; float:right; margin-right:35px;" class="afficher_pendant_la_saisaie_recette" required >
+						<option></option>
+						<option>2018</option>
+						<option>2019</option>
+						<option>2020</option>
+						<option>2021</option>
+						<option>2022</option>
+						<option>2023</option>
+						<option>2024</option>
+						<option>2025</option>
+						<option>2026</option>
+						<option>2027</option>
+						<option>2028</option>
+						<option>2029</option>
+						<option>2030</option>
+				    </select> 
+				    <label for="batani2" style="margin-left:30px; margin-top:0px;  float:left; ">Mois</label><input type="checkbox" name="batani2" style="float:left; margin-top:-14px;"  checked>
+					<select title="mois" name="mois" style="max-width:60px; margin-top:-18px; float:right; margin-right:35px;" required >
+				  	    <option></option>
+				    </select>
+				  
+
+			    </div>
+			    <div class="section">
+				     <br>
+				     <input type="text" name="observation" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Observation" style="height:50px;"  class="afficher_pendant_la_saisaie_recette"  >
+                     <input type="submit" onclick="actenumero();" id="enregistrer"  name="Enregistrer" value="Enregistrer" style="background-color: #D4D7C4;  height: 30px; margin-left:5px; "    />
+				 <br>
+		                  						
+			    </div>
+			  
+			</form>  
+	   </div><!-- fin navgauche -->
+	   
+	   <!-- TABLEAU D AFFICHAGE(lectureBD) -->
+	   <div id="article"> 	   
+	         <div id="yivawo"  ></div>						                                                                                                                                                                                    		   				
+	         </div>
+
+	   <!-- MENU VERTICAL(accordeon) -->
+	   <div id="aside"  >		  
+		        <img src="img/menu.png" id="iconemenu" style=" z-index=4; position:fixed; top:7%; right:5.5%; " /><br>
+                <img src="img/menu.png" id="imagemenu" style=" z-index=4; position:fixed; top:7%; right:5.5%; " /><br>	  
+				<ul class="navigation"  >	<!-- margin-top:-19.5%; pour LES GRAND ECRAN-->
+					<li class="toggleSubMenu"><span>Passeports</span>
+						<ul class="subMenu" style="color:silver;" >						
+						  <li><a href="index.html" title=""  style="color:white;" >Fiche Export</a></li>
+						</ul>
+					</li>
+					<li class="toggleSubMenu" id="r_legalisation"><span>Recettes Etat civil</span>
+						    <ul class="subMenu" id="panel2" >											
+							<li><a href="#" class="island1" style="padding-left:30px; padding-right:37px; color:white;">2018</a></li><hr>
+								<div id="m2018">    
+									<ul class="panel3" >
+										<li >    <a   href="#" class="island1" style="padding-left:0px; color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Janvier-2018</a></li><hr >
+										<li >    <a   href="#" class="island1" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Février-2018</a></li><hr>
+										<li >    <a   href="#" class="island1" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Mars-2018</a></li><hr>
+										<li >    <a   href="#" class="island1" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Avril-2018</a></li><hr>
+										<li >    <a   href="#" class="island1" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Mai-2018</a></li><hr>
+										<li >    <a   href="#" class="island1" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Juin-2018</a></li><hr>
+										<li >    <a   href="#" class="island1" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Juillet-2018</a></li><hr>
+										<li >    <a   href="#" class="island1" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Août-2018</a></li><hr>
+										<li >    <a   href="#" class="island1" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Septembre-2018</a></li><hr>
+										<li >    <a   href="#" class="island1" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Octobre-2018</a></li><hr>
+										<li >    <a   href="#" class="island1" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Novembre-2018</a></li><hr>
+										<li >    <a   href="#" class="island1" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Décembre-2018</a></li><hr>	
+												
+									</ul> 
+								</div>
+							<li><a href="#" class="island2" style="padding-left:30px; padding-right:37px; color:white;">2019</a></li><hr>
+								<div id="m2019">
+									<ul class="panel3" >
+										<li >    <a   href="#" class="island2" style="padding-left:0px; color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Janvier-2019</a></li><hr >
+										<li >    <a   href="#" class="island2" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Février-2019</a></li><hr>
+										<li >    <a   href="#" class="island2" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Mars-2019</a></li><hr>
+										<li >    <a   href="#" class="island2" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Avril-2019</a></li><hr>
+										<li >    <a   href="#" class="island2" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Mai-2019</a></li><hr>
+										<li >    <a   href="#" class="island2" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Juin-2019</a></li><hr>
+										<li >    <a   href="#" class="island2" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Juillet-2019</a></li><hr>
+										<li >    <a   href="#" class="island2" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Août-2019</a></li><hr>
+										<li >    <a   href="#" class="island2" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Septembre-2019</a></li><hr>
+										<li >    <a   href="#" class="island2" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Octobre-2019</a></li><hr>
+										<li >    <a   href="#" class="island2" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Novembre-2019</a></li><hr>
+										<li >    <a   href="#" class="island2" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Décembre-2019</a></li><hr>												
+									</ul>
+								</div>									
+							<li><a href="#" class="island3" style="padding-left:30px; padding-right:37px; color:white;">2020</a></li><hr>
+								<div id="m2020">
+										<ul class="panel3" >
+											<li >    <a   href="#" class="island3" style="padding-left:0px; color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Janvier-2020</a></li><hr >
+											<li >    <a   href="#" class="island3" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Février-2020</a></li><hr>
+											<li >    <a   href="#" class="island3" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Mars-2020</a></li><hr>
+											<li >    <a   href="#" class="island3" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Avril-2020</a></li><hr>
+											<li >    <a   href="#" class="island3" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Mai-2020</a></li><hr>
+											<li >    <a   href="#" class="island3" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Juin-2020</a></li><hr>
+											<li >    <a   href="#" class="island3" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Juillet-2020</a></li><hr>
+											<li >    <a   href="#" class="island3" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Août-2020</a></li><hr>
+											<li >    <a   href="#" class="island3" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Septembre-2020</a></li><hr>
+											<li >    <a   href="#" class="island3" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Octobre-2020</a></li><hr>
+											<li >    <a   href="#" class="island3" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Novembre-2020</a></li><hr>
+											<li >    <a   href="#" class="island3" style="padding-left:0x;  color:#FFD700;" onmouseover="this.style.color='white';" onmouseout="this.style.color='#FFD700'"> Décembre-2020</a></li><hr>												
+										</ul>
+								</div>							    
+						</ul>
+					</li>
+					<li class="toggleSubMenu"><span>Caisse</span>
+						  <ul class="subMenu" style="color:silver;" >				
+							<li><a href="lectureBD_caisse.html" title="" style="color:white;">Journal de caisse</a></li>				
+						  </ul>
+					</li>		
+					<li><a href="#" title="">Cartes consulaires</a></li>
+                    <li><a href="#"   onclick="popup_lectureBD2();  "   ><input type="button" id="zoom" value="Zoom"    /> </a></li>					
+				</ul>
+   		   
+	   </div><!-- fin menu accordeon -->
+	   <div class="clear"></div>
+	</div>
+	<div id="footer"></div>
+  </div>
+  <!-- pour le topnav -->
+ <script>
+	function myFunction() {
+		var x = document.getElementById("myTopnav");
+		if (x.className === "topnav") {
+			x.className += " responsive";
+		} else {
+			x.className = "topnav";
+		}
+	}
+</script>  
+</body>
+
+</html>
+

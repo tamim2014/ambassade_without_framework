@@ -1,0 +1,228 @@
+.extended_width	{
+	border: 0px  #cf3fc3 dotted; 
+	font-style: italic;
+	font-size: font-size: 22px;
+	font-family: "Times New Roman", Georgia, Serif;
+	color:#000066; 
+	background-color: #e5eec1;
+}
+		
+.reduced_width {
+	border: 0px  #cf3fc3 dotted;
+	font-style: italic;
+	font-size: 20px;
+	font-family: "Times New Roman", Georgia, Serif;
+	color:#00004d; 
+	
+	
+				
+}
+			
+body {
+	background-color:silver;	
+}
+#wrap {
+    width: 100%;
+    margin: 40px  auto; 
+    background-color:silver;	
+}
+
+#header {
+	height:100px;
+    width: 100%;
+}
+/* drapeau sur  EFFET CREUX */ 	
+div#header div.hollowTop{
+    width: 90%; 
+	margin:auto;
+	height:94px; 
+	
+	background: silver; /* #e5eecc;  #1D702D; */ 
+	z-index:3; 
+	border-radius:0px;
+	color: #FFFFFF;
+
+	/* EFFET CREUX */
+	box-shadow:
+	0px 2px 2px 0px rgba(0, 0, 0, 0.5) inset,
+	0px 2px 2px 0px rgba(255, 255, 255, 0.5);
+	padding:0px;   		
+}
+#beramu{
+	float:left;/*place le drapeau à gauche */  
+	margin-top:1px; 
+	margin-left:2px;
+}
+
+h1.titre{
+    float:right;/*place le texte à droite */
+	line-height:100px;/* descend le texte */	
+	margin-right:37%;
+}
+
+
+div#nav {
+	height:40px;
+    width:90%; 
+	margin:auto ;  
+   background-color:#E5E5E5 ;  /* j hesite entre ça et le #999999   */  
+    
+ } 
+#navgauche {
+     float:left;
+      width:240px;
+	  margin-left:5%;
+      text-align:center;
+	   height:500px;/* vaut mieux mettre 100% */
+      
+	  
+   
+    background-color:#E5E5E5;    
+}
+
+#article {
+   
+     
+    float:left;
+      width:55%;
+      text-align:center;
+      height:500px;
+     
+    background-color:silver;    
+}
+
+#aside {
+    
+     float:left;
+      width:16%;/* width:15%; pour les GRANDS ECRAN */
+	  margin-right:5%;
+      text-align:center;
+      height:500px;
+    background-color:#E5E5E5;
+        
+}
+div#aside ul.navigation{
+           color:silver; 
+		   text-align:left; 
+		   width:100%; 
+		   margin-top:-18.1%; /* margin-top:-19.5%; pour LES GRAND ECRAN   */
+}
+
+#footer {
+	height:40px;
+    width: 90% ;
+	margin:auto;
+    background-color: #999999;
+        
+}
+/*********************menu *********************************************/
+	  /* menu veritical*/
+ul:hover { list-style-type: none; }
+	  
+ul.navigation {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #A4A4A4;
+  color: #fff;
+  width: 200px;
+  font: 1.2em "Trebuchet MS", sans-serif;
+}
+.navigation a, .navigation span {
+  display: block;
+  padding: 4px 10px;
+  color: #00004d;
+  text-decoration: none;
+  background: #D4D7C4; url(menu-item.png) left bottom no-repeat;
+}
+.navigation .toggleSubMenu a, .navigation .toggleSubMenu span {
+  background-image: url(menu-item-deroule.png);
+}
+.navigation .open a, .navigation .open span {
+  background-image: url(menu-item-enroule.png);
+}
+.navigation a:hover, .navigation a:focus, .navigation a:active {
+  text-decoration: underline;
+}
+
+.navigation .subMenu {
+  font-size: .8em;
+  
+  background: #49505a url(subMenu.png) 0 0 repeat-x;
+  font-size: .9em;
+  
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #666;
+}
+.navigation ul.subMenu a {
+  background: none;
+  padding: 3px 20px;
+}
+a:hover { opacity: .7;   }
+
+input#afficher  {display:none;}
+
+@media only screen and (max-width:35em){ 
+#imagemenu { display:block;}
+ul.navigation  { display:block ;  width:100%;  }
+div#f  {  display:block; width: 100%;  }
+div#contenu  {  display:none; width: 95%;  }
+input.txt {display:block; left:5.9%; width:90%;}
+input.add {display:block; left: 80%; }
+input#save_  {margin-left: -10px; }
+scan.label { display: none;}
+
+input#afficher  {display:block; left:35%;}
+
+/*control du questionnaire*/
+#close, #write { display:none; }
+#closeread { display:block;}
+/* $("input.txt").attr('maxlength', '18');  c'est du jQuery.Comment le faire en CSS3? */
+
+}
+
+/* La table d affichage des resultas de la BD */
+
+	
+	     div#main div#article  div#yivawo tr th{
+		    border-radius:2px;
+			  	-webkit-border-radius:2px;
+				-moz-border-radius:2px;
+                -khtml-border-radius:2px;
+         }
+		 /* Des piques transluscide pour separer les atributs de la table */ 
+         div#main div#article  div#yivawo tr td{
+
+				 box-shadow: 1px 1px 0px 0px white; 
+         }		 
+
+        /* ici le tableau des résultats */       
+		  div#main div#article  div#yivawo{ 
+	          background-color: #e5eecc;
+	          overflow:  auto;  white-space:nowrap;  display: block; 
+			  position: relative; margin:20px;  
+			  /* box-shadow: 1px 1px 0px 0px green; */
+			  
+
+			  
+         }
+        /* Des couleurs alternées dans les lignes de la table: lectureBD.php*/
+		div#main div#article  div#yivawo table tr:nth-child(2n+2) td {
+				color:Peru ;
+				background: #E5E5E5;
+
+        }	
+/* formuaire de saisie: Opération légalisation  */
+
+div#main{
+height:610px;
+} div#main div#navgauche,div#main div#article,div#main div#aside {
+height:100%;
+}
+div#main div#navgauche div.section{
+margin-top:0px;
+}
+		
+	
+		

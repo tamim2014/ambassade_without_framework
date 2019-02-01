@@ -1,0 +1,397 @@
+<?php session_start(); if(!isset($_SESSION["pref"])) $_SESSION["pref"]=""; $s=$_SESSION["pref"];
+$pr=$_GET['prhtml'];
+$pr=ltrim($pr);
+ ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title> Passeports</title>
+<meta charset="utf-8"/>
+<link href="css/topnav_min.css" rel="stylesheet" title="Style" />
+<link rel="stylesheet" href="css/style.css"/>
+<link href="css/accueil.css" rel="stylesheet" title="Style" />
+<link href="css/base4.css" rel="stylesheet" title="Style" />
+<!-- on ajoute la ceinture :  menu topnav  -->
+
+<link href="css/topnav.css"     rel="stylesheet" title="Style" />
+<link href="css/topnav_min.css" rel="stylesheet" title="Style" />
+
+
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  -->
+<script src="js/ajax_googleapis_angular1.6.9.min.js"></script> <!-- AFFICHAGE DE LA SAISIE EN SIMULTANEE -->
+<script  src="script.js"></script>
+
+
+<!--  menu accordeon -->
+	<link href="menu2/css/menu.css" rel="stylesheet" title="StyleM" />
+    
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	<script src="js/libs_ajax_jquery_min_3.3.1-submit_load.js"></script>
+	
+	
+	<script src="menu2/js/jquery.js"> </script> 
+	<script src="menu2/js/menu_accordeon.js"> </script>
+	<script src="menu2/js/menu_ajax.js"> </script>
+	<script src="js/capture_items_passeport_MV.js"></script><!--Menu Vertical  affiche une vue BD dans la div article -->
+	<script src="js/capture_items_passeport_MH.js"></script><!--Menu Horizontal  affiche une vue BD dans la div article -->
+	<script src="js/capture_recherche_passeport.js"></script>
+	<script src="js/capture_recherche2_passeport.js"></script>
+	 <script src="js/jquery.js"></script>
+	<script src="js/lectureBD.js"></script>
+	<script src="js/base4_menu_accordeon.js"></script>
+	<script src="js/afficher_la_saisie(passeport).js"></script>
+	<script src="js/accordeon_perso.js"></script>
+	
+	<!-- build an embossed frame for div yivawo -->	
+	<style> 
+	    #yivawo{
+			margin-bottom:4px;   
+			box-shadow: 1px 1px 0px 0px #cdbe9f; 
+			width:94%; 
+			height:100%; 
+			scrollbar:auto;
+						 
+			margin:auto;				  
+			box-shadow:
+			  0px 8px 8px 0px rgba(0, 0, 0, 0.5) inset,
+			   0px 8px 8px 0px rgba(255, 255, 255, 0.5); 		 
+		}
+	</style>
+</head>
+<body>
+<div ng-app="myApp">
+  <div id="wrap">
+    <!--  creux du haut -->
+    <div id="header"   >	
+	     <div  class="hollowTop"> 
+		     <input type=image src=img/drapeau.png id="beramu" style="border-radius:0px;" /> 
+		     <h1 class="titre" >FICHE EXPORT  </h1>
+		 </div>	   	    
+	</div>
+    <!-- NAVIGATION HORIZONTAL -->	
+	<div id="nav">
+	
+	
+			<div class="topnav" id="myTopnav">
+
+								  <div class="dropdown" >
+											<button class="dropbtn">2015 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#" id="J2015">Janvier-2015</a>
+											  <a href="#">Février-2015</a>
+											  <a href="#">Mars-2015</a>
+											  <a href="#">Avril-2015</a>
+											  <a href="#">Mai-2015</a>
+											  <a href="#">Juin-2015</a>
+											  <a href="#">Juillet-2015</a>
+											  <a href="#">Août-2015</a>
+											  <a href="#">Septembre-2015</a>
+											  <a href="#">Octobre-2015</a>
+											  <a href="#">Novembre-2015</a>
+											  <a href="#">Décembre-2015</a>
+											</div>
+								  </div>
+								  <div class="dropdown">
+											<button class="dropbtn">2016 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2016</a>
+											  <a href="#">Février-2016</a>
+											  <a href="#">Mars-2016</a>
+											  <a href="#">Avril-2016</a>
+											  <a href="#">Mai-2016</a>
+											  <a href="#">Juin-2016</a>
+											  <a href="#">Juillet-2016</a>
+											  <a href="#">Août-2016</a>
+											  <a href="#">Septembre-2016</a>
+											  <a href="#">Octobre-2016</a>
+											  <a href="#">Novembre-2016</a>
+											  <a href="#">Décembre-2016</a>
+											</div>
+								  </div>
+								  <div class="dropdown">
+											<button class="dropbtn">2017 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2017</a>
+											  <a href="#">Février-2017</a>
+											  <a href="#">Mars-2017</a>
+											  <a href="#">Avril-2017</a>
+											  <a href="#">Mai-2017</a>
+											  <a href="#">Juin-2017</a>
+											  <a href="#">Juillet-2017</a>
+											  <a href="#">Août-2017</a>
+											  <a href="#">Septembre-2017</a>
+											  <a href="#">Octobre-2017</a>
+											  <a href="#">Novembre-2017</a>
+											  <a href="#">Décembre-2017</a>
+											</div>
+								  </div>								  
+								 				  
+								  <div class="dropdown">
+											<button class="dropbtn">2021 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2021</a>
+											  <a href="#">Février-2021</a>
+											  <a href="#">Mars-2021</a>
+											  <a href="#">Avril-2021</a>
+											  <a href="#">Mai-2021</a>
+											  <a href="#">Juin-2021</a>
+											  <a href="#">Juillet-2022</a>
+											  <a href="#">Août-2022</a>
+											  <a href="#">Septembre-2022</a>
+											  <a href="#">Octobre-2022</a>
+											  <a href="#">Novembre-2022</a>
+											  <a href="#">Décembre-2022</a>
+											</div>
+								  </div>								  
+								  <div class="dropdown">
+											<button class="dropbtn">2023 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2023</a>
+											  <a href="#">Février-2023</a>
+											  <a href="#">Mars-2023</a>
+											  <a href="#">Avril-2023</a>
+											  <a href="#">Mai-2023</a>
+											  <a href="#">Juin-20123</a>
+											  <a href="#">Juillet-2023</a>
+											  <a href="#">Août-2023</a>
+											  <a href="#">Septembre-2023</a>
+											  <a href="#">Octobre-2023</a>
+											  <a href="#">Novembre-2023</a>
+											  <a href="#">Décembre-2023</a>
+											</div>
+								  </div>								  
+								  <div class="dropdown">
+											<button class="dropbtn">2024 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2024</a>
+											  <a href="#">Février-2024</a>
+											  <a href="#">Mars-2024</a>
+											  <a href="#">Avril-2024</a>
+											  <a href="#">Mai-2024</a>
+											  <a href="#">Juin-2024</a>
+											  <a href="#">Juillet-2024</a>
+											  <a href="#">Août-2024</a>
+											  <a href="#">Septembre-2024</a>
+											  <a href="#">Octobre-2024</a>
+											  <a href="#">Novembre-2024</a>
+											  <a href="#">Décembre-2024</a>
+											</div>
+								  </div>
+								  <div class="dropdown">
+											<button class="dropbtn">2025 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2025</a>
+											  <a href="#">Février-2025</a>
+											  <a href="#">Mars-2025</a>
+											  <a href="#">Avril-2025</a>
+											  <a href="#">Mai-2025</a>
+											  <a href="#">Juin-2025</a>
+											  <a href="#">Juillet-2025</a>
+											  <a href="#">Août-2025</a>
+											  <a href="#">Septembre-2025</a>
+											  <a href="#">Octobre-2025</a>
+											  <a href="#">Novembre-2025</a>
+											  <a href="#">Décembre-2025</a>
+											</div>
+								  </div>
+								  <div class="dropdown">
+											<button class="dropbtn">2026 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2026</a>
+											  <a href="#">Février-2026</a>
+											  <a href="#">Mars-2026</a>
+											  <a href="#">Avril-2026</a>
+											  <a href="#">Mai-2026</a>
+											  <a href="#">Juin-2026</a>
+											  <a href="#">Juillet-2026</a>
+											  <a href="#">Août-2026</a>
+											  <a href="#">Septembre-2026</a>
+											  <a href="#">Octobre-2026</a>
+											  <a href="#">Novembre-2026</a>
+											  <a href="#">Décembre-2026</a>
+											</div>
+								  </div>								  
+								  <div class="dropdown">
+											<button class="dropbtn">2027 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2027</a>
+											  <a href="#">Février-2027</a>
+											  <a href="#">Mars-2027</a>
+											  <a href="#">Avril-2027</a>
+											  <a href="#">Mai-2027</a>
+											  <a href="#">Juin-2027</a>
+											  <a href="#">Juillet-2027</a>
+											  <a href="#">Août-2027</a>
+											  <a href="#">Septembre-2027</a>
+											  <a href="#">Octobre-2027</a>
+											  <a href="#">Novembre-2027</a>
+											  <a href="#">Décembre-2027</a>
+											</div>
+								  </div>								  
+								  <div class="dropdown">
+											<button class="dropbtn">2028 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2028</a>
+											  <a href="#">Février-2028</a>
+											  <a href="#">Mars-2028</a>
+											  <a href="#">Avril-2028</a>
+											  <a href="#">Mai-2028</a>
+											  <a href="#">Juin-2028</a>
+											  <a href="#">Juillet-2028</a>
+											  <a href="#">Août-2028</a>
+											  <a href="#">Septembre-2028</a>
+											  <a href="#">Octobre-2028</a>
+											  <a href="#">Novembre-2028</a>
+											  <a href="#">Décembre-2028</a>
+											</div>
+								  </div>								  
+								  <div class="dropdown">
+											<button class="dropbtn">2029 <i class="fa fa-caret-down"></i></button>
+											<div class="dropdown-content">
+											  <a href="#">Janvier-2029</a>
+											  <a href="#">Février-2029</a>
+											  <a href="#">Mars-2029</a>
+											  <a href="#">Avril-2029</a>
+											  <a href="#">Mai-2029</a>
+											  <a href="#">Juin-2029</a>
+											  <a href="#">Juillet-2029</a>
+											  <a href="#">Août-2029</a>
+											  <a href="#">Septembre-2029</a>
+											  <a href="#">Octobre-2029</a>
+											  <a href="#">Novembre-2029</a>
+											  <a href="#">Décembre-2029</a>
+											</div>
+											
+								  </div>                                 								  
+						          <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>							  
+			   	                  <input type="text" id="search" placeholder="Search"   style=" margin-top:10px; margin-right:20px; float:right; background-color:#FFF;" /> 
+			</div>
+			<span type="text"  id="search_span" style="  margin-right:12px; margin-top:10px; float:right; " > <img src="img/search-icon.png"  />  </span>
+	
+	</div><!-- fin div#nav -->	
+	<div id="main">
+	   <div id="navgauche">
+	        <form action="SERVEUR/ecritureBD_insertionSQL.php" method="post" name="form1" id="form1"  >
+	            <div class="section">
+			        <br>
+			        <input type="text" name="nom_demandeur" placeholder="Nom" ng-model="firstName" id="afficher_pendant_la_saisaie_passeport" >
+				    <input type="text" name="prenom_demandeur"  placeholder="Prenom" ng-model="lastName" >
+				    <input type="text" name="montant"  placeholder="Montant" ng-model="amount">
+			    </div>
+			    <div class="section">
+			       <br>
+			        <select title="ob" name="observation" placeholder="Observation" ng-model="observation" >
+					    <option>Observation</option>
+					    <option>PP+CNI</option>
+					    <option>CNI</option>
+				    </select>
+				 	<select title="lot" name="lot"  placeholder="Lot" ng-model="lot">
+						<option>Lot</option>
+						<option>001</option>
+						<option>002</option>
+						<option>003</option>
+						<option>004</option>
+						<option>005</option>
+						<option>006</option>
+						<option>007</option>
+						<option>008</option>
+						<option>009</option>
+						<option>010</option>
+				    </select>				
+				    <input type="date"  name="date_export"  placeholder="Date" ng-model="date" style=" height:18px; width:150px;"/>
+			    </div>
+			    <div class="section">		     
+				  <label for="dossier_expedie" style="margin-left:30px; margin-top:14px;  float:left; " >Envoi</label><input type="checkbox" name="dossier_expedie"  id="dossier_expedie"    style="float:left; margin-top:-14px;"><input type="date" name="date_expedie"    id="date_expedie"      style="max-width:60px; margin-top:-18px; float:right; margin-right:35px;"  ng-model="envoi"  >
+				  <label for="passeport_arrive" style="margin-left:30px; margin-top:0px;  float:left; ">Retour</label><input type="checkbox" name="passeport_arrive" id="passeport_arrive"   style="float:left; margin-top:-14px;"><input type="date" name="date_arrive"     id="date_arrive"       style="max-width:60px; margin-top:-18px; float:right; margin-right:35px;"  ng-model="retour" >
+				  <label for="passeport_livre" style="margin-left:30px; margin-top:0px;  float:left; ">Distrb</label><input type="checkbox" name="passeport_livre"   id="passeport_livre"    style="float:left; margin-top:-14px;"><input type="date" name="date_livraison"  id="date_livraison"    style="max-width:60px; margin-top:-18px; float:right; margin-right:35px;"  ng-model="distribution" >
+			    </div>
+				
+			    <div class="section" >		   
+				    <DIV id="submit_load">
+				         <input type="submit"   id="enregistrer"  name="enregistrer" value="Enregistrer" style="background-color: #D4D7C4;  height: 30px; " />  
+				    </DIV>
+				</div>
+															
+				<!-- SECTION moteur de recherche -->
+				<div class="section" id="s_recherche" >		   
+					<input type="button"  id="recherche"  name="" value="Chercher" style="background-color: #D4D7C4;  height: 30px; "    />
+					<br><br>
+					<input type="text"   id="titulaire"  name="titulaire" placeholder="Nom (ou Prénom)" style="width:150px; height:30px;" />
+			    </div> 
+				
+				
+                				
+			</form>  
+	   </div><!-- fin navgauche -->	 
+	   
+	   <!-- debut article(affichage resultat de la base de donnée) -->
+	   <div id="article">
+                
+	         
+	         <div id="yivawo"   >
+			   
+			    <div  ng-controller="datCtrl" style="text-align: left; margin-left:2.5%;">{{ today | date }}</div>
+				<div style="text-align: center; margin-top:-20px; ">{{" LOT:  " + lot }} </div>			 
+				
+				<table >
+				<tr><th>NOM</th><th>PRENOM</th><th> ENVOI </th><th>RETOUR  </th><th>DISTRIBUTION </th><th>OBSERVATION</th><th> €  </th> <th>DATE </th>  <tr>							 
+				<tr><td>{{firstName}}</td><td>{{lastName}}</td><td>{{envoi | date :  "dd.MM.y"}}</td><td>{{retour | date :  "dd.MM.y"}}</td><td>{{distribution | date :  "dd.MM.y"}} </td><td>{{observation}}</td><td>{{amount}}</td><td>{{ date | date :  "dd.MM.y" }}</td></tr>               
+				<tr><td></td><td></td><td>  </td><td>  </td><td> </td><td><span style="color:green;  font-size: 17px; font-style: bold;" >TOTAL :</span> </td><td><span style="color:green;  font-size: 17px; font-style: bold;" >{{amount}}</span> </td><td> </td>  <tr> 
+				</table>
+				
+			 </div>
+        			 
+	   </div>
+	   <!-- fin article -->	   
+	   <div id="aside"  >
+	       <!-- menu accordeon -->		  
+		        <img src="img/menu.png" id="iconemenu" style=" z-index=4; position:fixed; top:7%; right:5.5%; " /><br>
+                <img src="img/menu.png" id="imagemenu" style=" z-index=4; position:fixed; top:7%; right:5.5%; " /><br>
+					    <!-- menu accordeon -->
+	  
+				<ul class="navigation"  >	<!-- margin-top:-19.5%; pour LES GRAND ECRAN-->
+					<li class="toggleSubMenu"><span>Passeports</span>
+						<ul class="subMenu" id="seulement_les_passeports" style="color:silver;" >
+						  <li id="envoi"><a href="#" title=""  style="color:white;" >Envois</a></li>
+						  <li id="retour"><a href="#" title=""  style="color:white;" >Retours</a></li>
+						  <li id="distrib_mensuel"><a href="#" title=""  style="color:white;" >Distrib(mensuel)</a></li>
+						  <li id="distrib_annuel"><a href="#" title=""  style="color:white;" >Distrib(annuel)</a></li>
+						  <li id="distrib_tous"><a href="#" title=""  style="color:white;" >Distributions</a></li>
+						</ul>
+					</li>
+					<li class="toggleSubMenu"><span>Recettes Etat civil</span>
+						  <ul class="subMenu" id="seulement_les_recettes" style="color:silver;" >						
+							<li><a href="lectureBD_recette_legalisation.html" title="" style="color:white;">Légalisation</a></li>
+						  </ul><!-- fin ul.subMenu -->
+					</li>
+					<li class="toggleSubMenu"><span>Caisse</span>
+						  <ul class="subMenu" id="seulement_les_caisses" style="color:silver;" >						
+							<li><a href="lectureBD_caisse.html" title="" style="color:white;">Journal de caisse</a></li>
+						  </ul>
+					</li>		
+					<li><a href="#" title="">Cartes consulaires</a></li>			
+				</ul>  		   
+	   </div><!-- fin menu accordeon -->
+	   <div class="clear"></div>
+	</div>
+	<div id="footer"></div>
+  </div> 
+</div><!-- fin div ng-app -->
+ <script>
+	// to use AngularJS for the current date
+	var app = angular.module('myApp', []);
+    app.controller('datCtrl', function($scope) {
+    $scope.today = new Date();
+   });
+       
+ </script>
+
+ 
+
+ 
+</body>
+</html>
+
+
+
+
