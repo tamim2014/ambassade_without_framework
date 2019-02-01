@@ -1,0 +1,1 @@
+# ambassade_without_framework
